@@ -20,13 +20,13 @@ cd ITK-SNAP-Burgess-Sodt
 git checkout f5a08b5
 git submodule update --init --recursive
 mkdir build
+
 # Apply the patch to CMakeLists.txt to fix tinyxml header includes
 patch -u CMakeLists.txt ../../tinyxml-include.patch
 
-# Change to the Submodules directory
-cd Submodules
 
 # Clone the missing c3d repository and check out a specific commit
+cd Submodules
 git clone https://github.com/pyushkevich/c3d.git
 cd c3d
 git checkout 6775632
