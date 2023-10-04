@@ -1,0 +1,21 @@
+--- ITK-SNAP-Burgess-Sodt/CMakeLists.txt	2023-10-03 20:08:34.443733109 +0000
++++ /root/test/build/_deps/itksnap-src/CMakeLists.txt	2023-10-03 19:43:10.095140878 +0000
+@@ -631,6 +631,9 @@
+    tinyxml/tinyxml.h
+ )
+ 
++SET(TINYXML_INCLUDE_DIRS
++	tinyxml/
++)
+ # These files contain the Qt-specific user interface source code
+ SET(UI_QT_CXX
+   GUI/Qt/Components/AnnotationToolPanel.cxx
+@@ -1129,7 +1132,7 @@
+ 
+ # Set up include directories for these targets
+ FOREACH(target ${SNAP_INTERNAL_LIBS})
+-  TARGET_INCLUDE_DIRECTORIES(${target} PUBLIC ${SNAP_INCLUDE_DIRS})
++	TARGET_INCLUDE_DIRECTORIES(${target} PUBLIC ${SNAP_INCLUDE_DIRS} ${TINYXML_INCLUDE_DIRS})
+ ENDFOREACH()
+ 
+ #--------------------------------------------------------------------------------
