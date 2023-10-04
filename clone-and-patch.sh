@@ -23,7 +23,8 @@ mkdir build
 
 # Apply the patch to CMakeLists.txt to fix tinyxml header includes
 patch -u CMakeLists.txt ../../tinyxml-include.patch
-
+# Apply the patch to make the signal handler compile with glibc 2.32 or later
+patch -u GUI/Qt/main.cxx ../../glibc-signal.patch
 
 # Clone the missing c3d repository and check out a specific commit
 cd Submodules

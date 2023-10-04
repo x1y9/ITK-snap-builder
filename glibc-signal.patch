@@ -1,0 +1,22 @@
+--- /home/ubuntu/ITK-snap-builder/build/ITK-SNAP-Burgess-Sodt/GUI/Qt/main.cxx	2023-10-04 16:29:47.896218027 +0000
++++ main.cxx	2023-10-04 16:33:19.436537808 +0000
+@@ -53,10 +53,18 @@
+ #include <signal.h>
+ #include <execinfo.h>
+ 
++#if defined(__GLIBC__) && (__GLIBC__ > 2 || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 32))
++#define SIGNAL_STRING(str) strsignal(str)
++#else
++extern const char *const sys_siglist[];
++#define SIGNAL_STRING(str) sys_siglist[str]
++#endif
++
++
+ void SegmentationFaultHandler(int sig)
+ {
+   cerr << "*************************************" << endl;
+-  cerr << "ITK-SNAP: " << sys_siglist[sig] << endl;
++  cerr << "ITK-SNAP: " << SIGNAL_STRING(sig) << endl;
+   cerr << "BACKTRACE: " << endl;
+   void *array[50];
+   int nsize = backtrace(array, 50);
