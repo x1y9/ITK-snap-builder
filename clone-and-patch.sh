@@ -19,7 +19,7 @@ git clone --recurse-submodules https://github.com/alexsodt/ITK-SNAP-Burgess-Sodt
 cd ITK-SNAP-Burgess-Sodt
 git checkout f5a08b5
 git submodule update --init --recursive
-
+mkdir build
 # Apply the patch to CMakeLists.txt to fix tinyxml header includes
 patch -u CMakeLists.txt ../../tinyxml-include.patch
 
